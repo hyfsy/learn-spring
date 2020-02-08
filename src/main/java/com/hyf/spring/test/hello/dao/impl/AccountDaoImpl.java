@@ -1,6 +1,6 @@
-package com.hyf.spring.test.dao.impl;
+package com.hyf.spring.test.hello.dao.impl;
 
-import com.hyf.spring.test.dao.IAccountDao;
+import com.hyf.spring.test.hello.dao.IAccountDao;
 
 public class AccountDaoImpl implements IAccountDao {
 

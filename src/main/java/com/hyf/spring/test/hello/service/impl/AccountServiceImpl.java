@@ -1,9 +1,8 @@
-package com.hyf.spring.test.service.impl;
+package com.hyf.spring.test.hello.service.impl;
 
-import com.hyf.spring.test.BeanFactory;
-import com.hyf.spring.test.dao.IAccountDao;
-import com.hyf.spring.test.dao.impl.AccountDaoImpl;
-import com.hyf.spring.test.service.IAccountService;
+import com.hyf.spring.test.hello.BeanFactory;
+import com.hyf.spring.test.hello.dao.IAccountDao;
+import com.hyf.spring.test.hello.service.IAccountService;
 
 public class AccountServiceImpl implements IAccountService {
 
@@ -16,4 +15,5 @@ public class AccountServiceImpl implements IAccountService {
 
         accountDao.getAllAccount();
     }
+
 }

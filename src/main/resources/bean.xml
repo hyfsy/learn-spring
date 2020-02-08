@@ -1,0 +1,128 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- spring的细节 -->
+    <!--
+        三种创建对象方式
+        作用范围
+        生命周期
+    -->
+
+    <!-- ===============================创建对象============================== -->
+
+    <!--
+        使用默认构造函数创建，在bean标签中只指定了id和class，就会创建
+        如果该类没有默认的构造函数，则对象无法创建
+    -->
+    <bean id="account" class="com.hyf.spring.test.ioc.Account" />
+
+    <!--
+        使用简单工厂方式创建对象，使用类中的某个方法创建对象
+    -->
+    <bean id="instanceFactory" class="com.hyf.spring.test.ioc.InstanceFactory" />
+    <bean id="accountInstance" factory-bean="instanceFactory" factory-method="getAccount" />
+
+    <!--
+        使用静态方法创建对象，使用类中的静态方法创建对象
+    -->
+    <bean id="accountStatic" class="com.hyf.spring.test.ioc.StaticFactory" factory-method="getAccount" />
+
+    <!-- ===============================作用范围============================== -->
+
+    <!--
+        bean标签的scope属性:
+            singleton: 单例（默认）
+            prototype: 多例
+            request: 用户的一次请求中有效
+            session: 用户的一次会话中有效
+            global-session: 作用于集群环境的会话范围，当不是集群时，就是session
+    -->
+    <bean id="accountScope" scope="prototype" class="com.hyf.spring.test.ioc.Account" />
+
+    <!-- ===============================生命周期============================== -->
+
+    <!--
+        bean标签的init-method属性指定的方法会在对象创建时调用
+                 destroy-method属性指定的方法会在对象销毁时调用
+        单例对象
+            创建：容器创建时创建
+            活着：容器还在，就一直活着
+            销毁：容器销毁时，对象消亡
+        多例对象
+            创建：对象使用时创建
+            活着：对象只要还在使用，就一直活着
+            销毁：对象长时间不用，并且没有其他对象引用时，由java的垃圾回收器回收
+    -->
+    <bean id="accountLife" init-method="init" destroy-method="destroy" class="com.hyf.spring.test.ioc.Account" />
+
+
+    <!-- 注入属性方式 -->
+    <!--
+        使用构造函数注入
+        使用set方法注入
+        使用注解注入
+    -->
+
+    <!--
+        构造函数注入使用的标签: <constructor-arg>
+        通过bean标签内的constructor-arg标签设置
+            type: 指定注入属性的数据类型
+            index: 指定注入属性在构造函数中的索引位置，从0开始
+            name: 用于指定给构造函数中指定名称的参数赋值
+            value: 用于提供基本类型和String类型的数据
+            ref: 引用其他的bean类型数据，指的就是在Spring的IOC核心容器中出现过的bean对象的id
+        优势：在创建bean对象时，注入数据是必须的操作，否则对象无法创建成功
+        弊端：改变了bean对象的实例化方式，使我们在创建对象时，如果用不到这些数据，也必须提供
+    -->
+    <bean id="now" class="java.util.Date" />
+    <bean id="userByConstructor" class="com.hyf.spring.test.di.User" >
+        <!-- type和index要配对使用 -->
+        <constructor-arg type="java.lang.Integer" index="0" value="123" />
+        <constructor-arg name="userName" value="张三" />
+        <constructor-arg name="birthday" ref="now" />
+    </bean>
+
+    <!--
+        set方法注入使用的标签: <property>
+        通过bean标签内的property标签设置
+            name: 指定注入时所调用的set方法后的名称，和类中属性名称无关
+            value: 用于提供基本类型和String类型的数据
+            ref: 引用其他的bean类型数据，指的就是在Spring的IOC核心容器中出现过的bean对象的id
+        优势：创建对象时没有明确的限制，可以直接使用默认构造函数
+        弊端：如果有某个成员必须有值，则获取对象时有可能set方法还没有执行
+    -->
+    <bean id="userBySetMethod" class="com.hyf.spring.test.di.User">
+        <property name="userId" value="123" />
+        <property name="userName" value="张三" />
+        <property name="birthday" ref="now" />
+    </bean>
+
+    <!--
+        复杂类型的注入/集合类型的注入
+            用于给list结构集合注入的标签:
+                list array set
+            用于个Map结构集合注入的标签:
+                map props
+        结构相同，标签可以互换
+    -->
+    <bean id="userWithCollection" class="com.hyf.spring.test.di.User">
+        <!-- 注入list结构数据 -->
+        <property name="strList">
+            <set>
+                <value>asdf</value>
+                <value>asdf</value>
+            </set>
+        </property>
+        <!-- 注入map结构数据 -->
+        <property name="prop">
+            <map>
+                <entry key="a" value="a" />
+                <entry key="b">
+                    <value>b</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

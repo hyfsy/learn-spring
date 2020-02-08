@@ -33,6 +33,14 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- dbutils包 -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

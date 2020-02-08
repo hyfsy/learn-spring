@@ -1,10 +1,13 @@
-package com.hyf.spring.test;
+package com.hyf.spring.test.hello;
 
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * 简单工厂创建Bean对象
+ */
 public class BeanFactory {
 
     private static Properties prop = new Properties();
