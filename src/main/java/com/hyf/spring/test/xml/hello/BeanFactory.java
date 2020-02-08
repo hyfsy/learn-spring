@@ -1,4 +1,4 @@
-package com.hyf.spring.test.hello;
+package com.hyf.spring.test.xml.hello;
 
 import java.util.Enumeration;
 import java.util.HashMap;

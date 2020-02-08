@@ -1,4 +1,4 @@
-package com.hyf.spring.test.hello.service;
+package com.hyf.spring.test.xml.hello.service;
 
 public interface IAccountService {
     void getAllAccount();

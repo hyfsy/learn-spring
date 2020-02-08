@@ -1,4 +1,4 @@
-package com.hyf.spring.test.hello.dao;
+package com.hyf.spring.test.xml.hello.dao;
 
 public interface IAccountDao {
     void getAllAccount();

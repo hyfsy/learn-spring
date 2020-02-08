@@ -1,9 +1,9 @@
-package com.hyf.spring.test.hello.controller;
+package com.hyf.spring.test.xml.hello.test;
 
-import com.hyf.spring.test.hello.BeanFactory;
-import com.hyf.spring.test.hello.service.IAccountService;
+import com.hyf.spring.test.xml.hello.BeanFactory;
+import com.hyf.spring.test.xml.hello.service.IAccountService;
 
-public class AccountController
+public class AccountTest
 {
 
     public static void  main(String[] args) {

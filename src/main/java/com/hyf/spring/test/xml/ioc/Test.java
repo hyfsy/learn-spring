@@ -1,4 +1,4 @@
-package com.hyf.spring.test.ioc;
+package com.hyf.spring.test.xml.ioc;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -1,4 +1,4 @@
-package com.hyf.spring.test.di;
+package com.hyf.spring.test.xml.di;
 
 import java.util.*;
 

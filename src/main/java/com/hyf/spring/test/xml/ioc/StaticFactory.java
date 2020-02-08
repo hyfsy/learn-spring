@@ -1,4 +1,4 @@
-package com.hyf.spring.test.ioc;
+package com.hyf.spring.test.xml.ioc;
 
 public class StaticFactory {
 
