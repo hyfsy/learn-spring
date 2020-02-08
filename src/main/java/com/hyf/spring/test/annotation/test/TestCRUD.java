@@ -3,6 +3,7 @@ package com.hyf.spring.test.annotation.test;
 import com.hyf.spring.test.annotation.component.SpringConfiguration;
 import com.hyf.spring.test.annotation.pojo.Account;
 import com.hyf.spring.test.annotation.service.IAccountService;
+import com.hyf.spring.test.annotation.util.CglibProxyFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ import java.util.List;
 public class TestCRUD {
 
     @Autowired
-    IAccountService accountService;
+    private IAccountService accountService;
+
+    @Autowired
+    private CglibProxyFactory cglibProxyFactory;
 
     @Test
     public void testSelectAllAccount() {
@@ -30,5 +34,11 @@ public class TestCRUD {
 //        IAccountService accountService = ioc.getBean("accountService", IAccountService.class);
         List<Account> allAccount = accountService.getAllAccount();
         System.out.println(allAccount);
+    }
+
+    @Test
+    public void testTransaction() {
+        IAccountService cglibProxy = (IAccountService)cglibProxyFactory.getCglibProxy(accountService);
+        cglibProxy.transfer(4,5,10.0);
     }
 }

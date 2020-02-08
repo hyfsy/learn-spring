@@ -15,4 +15,6 @@ public interface IAccountService {
     void updateAccount(Account account);
 
     void deleteAccountById(Integer id);
+
+    void transfer(Integer sourceId, Integer targetId,  Double money);
 }

@@ -30,12 +30,21 @@ public class JdbcConfiguration {
 
     /**
      * 创建dbutils的操作数据库对象，指定为多例类型
+     * 带事务操作
      */
     @Bean(name = "runner")
     @Scope("prototype")
-    public QueryRunner getQueryRunner(@Qualifier("dataSource") DataSource dataSource){
-        return new QueryRunner(dataSource);
+    public QueryRunner getQueryRunner(){
+        return new QueryRunner();
     }
+
+//    @Bean(name = "runner")
+//    @Scope("prototype")
+//    public QueryRunner getQueryRunner(@Qualifier("dataSource") DataSource dataSource){
+//        return new QueryRunner(dataSource);
+//    }
+
+
 
     /**
      * 创建数据库连接池
