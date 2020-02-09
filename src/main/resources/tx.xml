@@ -83,4 +83,10 @@
     <!-- 配置开启事务注解扫描 -->
     <tx:annotation-driven />
 
+    <!-- 创建事务模板对象 -->
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <!-- 设置事务管理器属性 -->
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
 </beans>
