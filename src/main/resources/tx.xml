@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置包扫描 -->
+    <context:component-scan base-package="com.hyf.spring.tx" />
+
+    <!-- 设置为多例 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" scope="prototype">
+        <property name="dataSource" ref="druidDataSource" />
+    </bean>
+
+    <!-- 配置QueryRunner，有问题，事务无效 -->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <constructor-arg name="ds" ref="druidDataSource" />
+    </bean>
+
+    <!-- spring内置数据源 -->
+    <bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/learn?serverTimezone=UTC" />
+        <property name="username" value="root" />
+        <property name="password" value="hyflearn" />
+    </bean>
+
+    <!-- druid数据源 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/learn?serverTimezone=UTC" />
+        <property name="username" value="root" />
+        <property name="password" value="hyflearn" />
+    </bean>
+
+
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource" />
+    </bean>
+
+    <!-- 配置事务的通知 -->
+    <!-- 如果事务管理器的id 为 transactionManager ，则可以不配置transaction-manager属性  -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--
+            配置事务的属性
+                isolation：用于指定事务的隔离级别。默认值是DEFAULT，表示使用数据库的默认隔离级别
+                propagation：用于指定事务的传播行为。默认值是REQUIRED，表示一定会有事务,增删改的选择。查询方法可以选择SUPPORTS
+                read-only：用于指定事务是否只读。只有查询方法才能设置为true。默认值是false，表示读写
+                timeout：用于指定事务的超时时间，默认值是-1，表示永不超时。如果指定了数值，以秒为单位
+                rollback-for：用于指定一个异常,当产生该异常时，事务回滚，产生其他异常时，事务不回滚。没有默认值，表示任何异常都回滚
+                no-rollback-for：用于指定一个异常，当产生该异常时，事务不回滚，产生其他异常时事务回滚。没有默认值，表示任何异常都回滚
+        -->
+        <tx:attributes>
+            <!-- 配置调用指定方法时的事务 -->
+            <tx:method name="transfer" />
+
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="insert*" />
+            <tx:method name="update*" />
+            <tx:method name="delete*" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置aop事务 -->
+    <aop:config>
+        <!-- 配置切入点表达式 -->
+        <aop:pointcut id="pc1" expression="execution(* com.hyf.spring.tx.xml.service.*.*(..))" />
+        <!-- 建立切入点表达式与事务通知的关系 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc1" />
+    </aop:config>
+
+    <!-- 配置开启事务注解扫描 -->
+    <tx:annotation-driven />
+
+</beans>

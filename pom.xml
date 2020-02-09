@@ -22,11 +22,14 @@
 
     <dependencies>
         <!-- spring依赖包 -->
+        <!-- context内置：jcl、core、bean、aop、expression -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- jdbc内置：tx -->
+        <!-- orm 内置：jdbc、tx -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
