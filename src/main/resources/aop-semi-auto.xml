@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 被代理对象 -->
+    <bean id="accountService" class="com.hyf.spring.aop.semiauto.service.impl.AccountServiceImpl" />
+
+    <!-- 切面类 -->
+    <bean id="myAspectLogger" class="com.hyf.spring.aop.semiauto.MyAspectLogger" />
+
+    <!--
+        创建代理类，将被代理对象与切面类连接
+
+        使用工厂bean FactoryBean，底层调用 getObject() 返回特殊bean
+        ProxyFactoryBean，用于创建代理工厂bean，生成特殊代理对象
+            interfaces：确定接口们
+                通过<array>可以设置多个值，只有一个值时，可直接使用value
+            target：确定目标类
+            interceptorNames：通知 切面类的名称（String）
+    -->
+    <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 确定接口们 -->
+        <property name="interfaces" value="com.hyf.spring.aop.semiauto.service.IAccountService" />
+        <!-- 确定目标类 -->
+        <property name="target" ref="accountService" />
+        <!-- 通知 切面类的名称 -->
+        <property name="interceptorNames" value="myAspectLogger" />
+        <!-- 是否强制使用cglib代理 -->
+        <property name="optimize" value="true" />
+    </bean>
+
+    <!-- aop配置 -->
+    <!-- proxy-target-class指定是否使用cglib代理 -->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="pc1" expression="execution(* com.hyf.spring.aop.semiauto.service.*.*(..))" />
+        <!-- 配置一个特殊的切面，只有一个通知和一个切入点 -->
+        <aop:advisor advice-ref="myAspectLogger" pointcut-ref="pc1" />
+    </aop:config>
+
+</beans>

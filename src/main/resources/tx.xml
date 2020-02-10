@@ -17,6 +17,8 @@
     <!-- 配置包扫描 -->
     <context:component-scan base-package="com.hyf.spring.tx" />
 
+    <!--<context:annotation-config />-->
+
     <!-- 设置为多例 -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" scope="prototype">
         <property name="dataSource" ref="druidDataSource" />
@@ -77,6 +79,7 @@
         <!-- 配置切入点表达式 -->
         <aop:pointcut id="pc1" expression="execution(* com.hyf.spring.tx.xml.service.*.*(..))" />
         <!-- 建立切入点表达式与事务通知的关系 -->
+        <!-- 切面引用，可以把事务管理器当做一个切面 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pc1" />
     </aop:config>
 
