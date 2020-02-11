@@ -21,9 +21,9 @@ public class Logger {
         System.out.println("前置通知loggerBefore执行...");
     }
 
-    @AfterReturning("pc1()")
-    public void loggerAfterReturning(){
-        System.out.println("后置通知loggerAfterReturning执行...");
+    @AfterReturning(value = "pc1()", returning = "rtnObject")
+    public void loggerAfterReturning(Object rtnObject){
+        System.out.println("后置通知loggerAfterReturning执行..." + rtnObject);
     }
 
     @AfterThrowing("pc1()")

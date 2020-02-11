@@ -40,6 +40,19 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- spring整合web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- 测试web -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- dbutils包 -->
         <dependency>
@@ -76,7 +89,8 @@
             <version>3.2.5</version>
         </dependency>
 
-        <!-- spring-aop expression表达式需要 -->
+        <!-- spring-aop，包含aop实现/alliance规范/aspectj规范 -->
+        <!-- aspectj实现 -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>

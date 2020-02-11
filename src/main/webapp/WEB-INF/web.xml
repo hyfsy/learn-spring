@@ -4,4 +4,23 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!--
+    servlet -> init(ServletConfig) -> load-on-startup
+    filter -> init(FilterConfig) -> web.xml注册过滤器自动调用初始化
+    listener -> ServletContextListener -> servletContext对象监听 [Spring使用]
+  -->
+
+  <!-- 将spring配置文件路径加载到ServletContext的初始化参数中，让上下文监听器通过该路径去创建容器 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+  <!-- 配置上下文监听器 -->
+  <!-- 如果只配置监听器，默认加载xml文件位置：/WEB-INF/applicationContext.xml -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
 </web-app>

@@ -74,14 +74,14 @@
             <!-- 前置通知 -->
             <aop:before method="loggerBefore" pointcut-ref="pc1" />
             <!-- 后置通知 -->
-            <aop:after-returning method="loggerAfterReturning" pointcut-ref="pc1" />
+            <aop:after-returning method="loggerAfterReturning" pointcut-ref="pc1" returning="rtnObject" />
             <!-- 异常通知 -->
-            <aop:after-throwing method="loggerAfterThrowing" pointcut-ref="pc1" />
+            <aop:after-throwing method="loggerAfterThrowing" pointcut-ref="pc1" throwing="t" />
             <!-- 最终通知 -->
             <aop:after method="loggerAfter" pointcut-ref="pc1" />
 
             <!-- 环绕通知 -->
-            <aop:around method="loggerAround" pointcut-ref="pc1" />
+            <!--<aop:around method="loggerAround" pointcut-ref="pc1" />-->
         </aop:aspect>
     </aop:config>
 

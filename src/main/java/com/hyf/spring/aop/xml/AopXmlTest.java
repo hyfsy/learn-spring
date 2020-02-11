@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AopXmlTest {
 
     @Test
-    public void goAnnotation(){
+    public void go(){
 
         ApplicationContext ioc = new ClassPathXmlApplicationContext("aop.xml");
         AccountServiceImpl accountService = ioc.getBean("accountService", AccountServiceImpl.class);

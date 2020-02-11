@@ -47,6 +47,7 @@
 
 
     <!-- 事务管理器 -->
+    <!-- 事务管理器需要事务信息，事务信息在connection中，connection在datasource中 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="druidDataSource" />
     </bean>
