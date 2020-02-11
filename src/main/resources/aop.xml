@@ -38,9 +38,9 @@
                                     * com.hyf.spring.aop.xml.service.AccountServicelmpl.printAccount(java.lang.Integer)
                                 包名可以使用通配符，表示任意包。但是有几级包，就需要写几个*.*
                                     * *.*.*.*.*.*.AccountServicelmpl.printAccount(java.lang.Integer)
-                                包名可以使用..表示当前包及其子包
+                                包名可以使用..表示当前包及其子包（包可以省略）
                                     * *..AccountServicelmpl.printAccount()
-                                类名和方法可以使用*通配
+                                类名和方法可以使用*通配（类可以省略）
                                     * *..*.*(java.lang.Integer)
                                 参数列表：
                                     基本类型直接写名称           int
@@ -51,6 +51,16 @@
                                 全通配写法：
                                     * *..*.*(..)
                             实际开发中切入点表达式的通常写法：切到业务层实现类下的所有方法
+
+                            ### 其他表达式写法
+                            within：匹配包或子包中的方法(了解)
+                                    within(com.hyf.spring.aop..*)
+                            this：  匹配实现接口的代理对象中的方法(了解)
+                                    this(com.hyf.spring.aop.service.IAccountService)
+                            target：匹配实现接口的目标对象中的方法(了解)
+                                    target(com.hyf.spring.aop.service.IAccountService)
+                            args：  匹配参数格式符合标准的方法(了解)
+                                    args(int int)
         -->
 
         <!-- 配置一个切面 -->
