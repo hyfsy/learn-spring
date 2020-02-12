@@ -7,7 +7,22 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.hyf.spring.ioc.annotation" />
+    <context:component-scan base-package="com.hyf.spring.ioc.annotation" use-default-filters="false">
+        <!-- 扫描时排除不要的，和下面二选一 -->
+        <!--
+            annotation 指定注解匹配
+                expression 全类名
+            assignable 指定类匹配
+
+            aspectj 指定aspectj表达式匹配
+            custom 实现TypeFilter接口，自定义排除规则
+            regex 正则表达式
+        -->
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
+        <!-- 一定要禁用掉默认的过滤规则： use-default-filters="false" -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
 
     <!-- 引入外部资源文件 -->
     <context:property-placeholder location="classpath:jdbc.properties" />

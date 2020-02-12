@@ -16,6 +16,14 @@
     <!--
         使用默认构造函数创建，在bean标签中只指定了id和class，就会创建
         如果该类没有默认的构造函数，则对象无法创建
+            parent="" // 指定继承属性的bean id
+            abstract="" // 指定该bean为抽象的，ioc容器不能获取该bean
+            depends-on="" // 指定依赖的bean，被依赖的bean会先创建，多个用，隔开
+            autowire="" // 基于xml的自动装配，只能对pojo对象进行装配，属性为集合类型会装配所有的
+                default/no 不自动装配属性
+                byName 通过属性名称找bean id，找不到为null
+                byType 按照属性类型找bean id，找不到为null
+                constructor 按照对应参数构造器进行装配，先找类型，再找id，找不到为null
     -->
     <bean id="account" class="com.hyf.spring.ioc.xml.ioc.Account" />
 
