@@ -2,6 +2,7 @@ package com.hyf.spring.tx.test;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -25,6 +26,13 @@ public class JdbcTemplateTest {
 
         // 测试增加方法
         jdbcTemplate.update("insert into account (name, money) values (?, ?)", "测试jdbcTemplate增加", 1000);
+
+        // 批量更新
+        String sql = "insert into account(name, money) values (?, ?)";
+        List<Object[]> batchArgs = new ArrayList<>();
+        batchArgs.add(new Object[]{"测试批量插入1", 32});
+        batchArgs.add(new Object[]{"测试批量插入2", 43});
+        jdbcTemplate.batchUpdate(sql, batchArgs);
 
         // 查询一行一列信息
         Long count = jdbcTemplate.queryForObject("select count(*) from account where money > ?", Long.class, 10);

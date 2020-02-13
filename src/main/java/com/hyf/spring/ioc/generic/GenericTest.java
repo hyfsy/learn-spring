@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * 泛型依赖注入
+ * <p>
  * 原理：通过 getClass().getGenericSuperclass() 获取泛型
  */
 public class GenericTest {

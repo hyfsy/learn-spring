@@ -1,6 +1,7 @@
 package com.hyf.spring.web;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -23,11 +24,15 @@ public class TestServlet extends HttpServlet {
         // 方法二：获取Spring容器
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 
+        // 方法三：获取Spring容器
+        WebApplicationContext currentWebApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+
+
         User user = ioc.getBean("user", User.class);
         User user1 = webApplicationContext.getBean("user", User.class);
-        System.out.println(user);
-        System.out.println(user1);
+        User user2 = currentWebApplicationContext.getBean("user", User.class);
         System.out.println(user == user1);
+        System.out.println(user1 == user2);
     }
 
 }

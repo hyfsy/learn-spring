@@ -10,9 +10,9 @@
     <context:component-scan base-package="com.hyf.spring.ioc.annotation" use-default-filters="false">
         <!-- 扫描时排除不要的，和下面二选一 -->
         <!--
-            annotation 指定注解匹配
+            annotation 指定注解匹配 [常用]
                 expression 全类名
-            assignable 指定类匹配
+            assignable 指定类匹配 [常用]
 
             aspectj 指定aspectj表达式匹配
             custom 实现TypeFilter接口，自定义排除规则

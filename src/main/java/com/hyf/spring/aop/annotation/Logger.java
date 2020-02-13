@@ -49,7 +49,7 @@ public class Logger {
      *
      * Spring中的环绕通知:它是spring框架为我们提供的一种可以在代码中手动控制增强方法何时执行的方式。
      */
-//    @Around("pc1()")
+    @Around("pc1()")
     public Object loggerAround(ProceedingJoinPoint pjp){
             Object rtnValue = null;
         try{

@@ -8,9 +8,9 @@ public class Logger {
     /**
      * 四种通知都可以加上 #{@link org.aspectj.lang.JoinPoint} 参数
      * <p>
-     * 后置通知 额外可加 #{@link Object} 参数表示被代理对象的返回结果
+     * 后置通知 额外可加 #{@link Object} 或指定类型的参数表示被代理对象的返回结果
      * <p>
-     * 异常通知 额外可加 #{@link Throwable} 参数表示执行方法时抛出的异常对象
+     * 异常通知 额外可加 #{@link Throwable} 或指定类型的参数表示执行方法时抛出的异常对象
      */
     public void loggerBefore(JoinPoint joinPoint) {
         System.out.println("前置通知loggerBefore执行...");
@@ -52,6 +52,7 @@ public class Logger {
             System.out.println("环绕通知loggerAround方法执行...后置通知");
         } catch (Throwable t) {
             System.out.println("环绕通知loggerAround方法执行...异常通知");
+            // 要抛出去让其他通知知道
             throw new RuntimeException(t);
         } finally {
             System.out.println("环绕通知loggerAround方法执行...最终通知");
