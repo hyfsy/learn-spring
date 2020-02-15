@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 自定义过滤的类别算是排除类别
+ * 包含没有排除其他属性的作用
  *
  * @author baB_hyf
  * @date 2020/02/15
