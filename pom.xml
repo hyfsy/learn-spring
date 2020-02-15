@@ -97,6 +97,13 @@
             <version>1.9.5</version>
         </dependency>
 
+        <!-- yaml文件解析 -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.25</version>
+        </dependency>
+
     </dependencies>
 
     <build>

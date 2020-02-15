@@ -1,0 +1,13 @@
+# Yet Another Markup Language 另一种标记语言
+# YAML yml
+# 写法：
+# 同一级，空格相同即可
+# 不同级，通常多加两个空格
+# 键值之间用[: ]分隔
+
+jdbc:
+  mysql:
+    driver: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/learn
+    username: root
+    password: hyflearn
