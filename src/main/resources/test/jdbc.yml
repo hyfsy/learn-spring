@@ -11,3 +11,9 @@ jdbc:
     url: jdbc:mysql://localhost:3306/learn
     username: root
     password: hyflearn
+
+
+window:
+  driver: window.mysql.jdbc.driver
+linux:
+  driver: linux.mysql.jdbc.driver
