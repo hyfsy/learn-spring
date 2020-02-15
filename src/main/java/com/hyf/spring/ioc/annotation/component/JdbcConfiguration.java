@@ -4,8 +4,11 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
 import javax.sql.DataSource;
 
@@ -49,12 +52,28 @@ public class JdbcConfiguration {
      * 创建数据库连接池
      */
     @Bean(name = "dataSource")
+    @Profile("dev")
     public DataSource getDataSource(){
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
         dataSource.setUsername(userName);
         dataSource.setPassword(password);
+        System.out.println("创建开发环境的数据源");
         return dataSource;
+    }
+
+    @Bean
+    @Profile("test")
+    public DataSource getTestDataSource(){
+        System.out.println("创建测试环境的数据源");
+        return new DriverManagerDataSource();
+    }
+
+    @Bean
+    @Profile("pro")
+    public DataSource getProDataSource(){
+        System.out.println("创建生产环境的数据源");
+        return new SingleConnectionDataSource();
     }
 }

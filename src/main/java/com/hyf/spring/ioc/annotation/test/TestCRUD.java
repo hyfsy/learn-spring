@@ -7,9 +7,11 @@ import com.hyf.spring.ioc.annotation.util.CglibProxyFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -18,6 +20,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringConfiguration.class)
 //@ContextConfiguration(locations = "classpath:bean.xml")
+@ActiveProfiles("dev")
 public class TestCRUD {
 
     @Autowired
@@ -25,6 +28,9 @@ public class TestCRUD {
 
     @Autowired
     private CglibProxyFactory cglibProxyFactory;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Test
     public void testSelectAllAccount() {
@@ -38,5 +44,10 @@ public class TestCRUD {
     public void testTransaction() {
         IAccountService cglibProxy = (IAccountService)cglibProxyFactory.getCglibProxy(accountService);
         cglibProxy.transfer(4,5,10.0);
+    }
+
+    @Test
+    public void testProfile() {
+        System.out.println(dataSource.getClass());
     }
 }
