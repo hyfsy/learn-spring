@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.*;
 
 /**
+ * 自定义包扫描
+ *
  * @author baB_hyf
  * @date 2020/02/15
  */
@@ -68,7 +70,8 @@ public class MyImportSelector implements ImportSelector {
         if (scanList.isEmpty()) {
             try {
                 // 3.扫描注解注释的类的包路径
-                String packageName = Class.forName(importingClassMetadata.getClassName()).getPackage().getName();
+                Class<?> clazz = Class.forName(importingClassMetadata.getClassName());
+                String packageName = clazz.getPackage().getName();
                 scanList.add(packageName);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();

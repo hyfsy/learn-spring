@@ -13,6 +13,7 @@ public class TestImport {
     @Test
     public void testImportSelector() {
         AnnotationConfigApplicationContext ioc = new AnnotationConfigApplicationContext("com.hyf.spring.ioc.hightest.highimport.selector.config");
+        // @Import需要指定类的全路径
         ImportServiceImpl importServiceImpl = ioc.getBean("com.hyf.spring.ioc.hightest.highimport.selector.service.impl.ImportServiceImpl", ImportServiceImpl.class);
         System.out.println(importServiceImpl);
     }
