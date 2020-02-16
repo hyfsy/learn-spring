@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 
 /**
  * 指定扫描的文件
@@ -75,5 +78,13 @@ public class JdbcConfiguration {
     public DataSource getProDataSource(){
         System.out.println("创建生产环境的数据源");
         return new SingleConnectionDataSource();
+    }
+
+    @Bean("connection")
+    public Connection getConnection(DataSource dataSource){
+        // 初始化事务同步器
+        TransactionSynchronizationManager.initSynchronization();
+        // 使用spring的数据源工具类获取当前线程的连接
+        return DataSourceUtils.getConnection(dataSource);
     }
 }
