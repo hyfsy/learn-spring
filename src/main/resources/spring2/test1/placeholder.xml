@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- spring2.5引入的context标签 -->
+    <context:property-placeholder location="jdbc.properties" />
+
+    <!-- 配置注册 PropertySourcesPlaceholderConfigurer 对象 -->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="jdbc.properties" />
+        <property name="properties">
+            <value>custom.strategy.class=com.something.DefaultStrategy</value>
+        </property>
+    </bean>
+
+    <bean id="serviceStrategy" class="${custom.strategy.class}"/>
+
+
+    <!-- ====================================================== -->
+
+    <!-- 配置文件中定义的属性会覆盖在此xml中配置的bean的信息 -->
+    <context:property-override location="jdbc.properties" />
+
+    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+        <property name="location" value="jdbc.properties" />
+        <property name="properties">
+            <!-- 强制要求格式 -->
+            <value>user.name=李四</value>
+        </property>
+    </bean>
+
+    <!-- 此bean定义的name会被覆盖 -->
+    <bean name="user" class="com.hyf.spring2.pojo.User">
+        <property name="name" value="张三" />
+    </bean>
+
+    <context:component-scan base-package="spring2" />
+
+</beans>

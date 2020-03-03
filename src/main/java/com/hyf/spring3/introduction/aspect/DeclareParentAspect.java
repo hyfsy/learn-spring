@@ -1,9 +1,8 @@
-package com.hyf.spring.aop.hightest.declareparents.util;
+package com.hyf.spring3.introduction.aspect;
 
-import com.hyf.spring.aop.hightest.declareparents.service.AnimalService;
-import com.hyf.spring.aop.hightest.declareparents.service.impl.AnimalServiceImpl;
+import com.hyf.spring3.introduction.service.AnimalService;
+import com.hyf.spring3.introduction.service.impl.AnimalServiceImpl;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @date 2020/02/16
  */
 @Component
-@ComponentScan("com.hyf.spring.aop.hightest.declareparents")
+@ComponentScan("com.hyf.spring3.introduction")
 @EnableAspectJAutoProxy
 @Aspect
 public class DeclareParentAspect {
@@ -29,10 +28,10 @@ public class DeclareParentAspect {
      * <p>
      * defaultImpl：设置当前成员变量的默认实现类
      */
-    @DeclareParents(value = "com.hyf.spring.aop.hightest.declareparents.service.PersonService+", defaultImpl = AnimalServiceImpl.class)
+    @DeclareParents(value = "*PersonService+", defaultImpl = AnimalServiceImpl.class)
     private AnimalService animalService;
 
-    @Pointcut("execution(* com.hyf.spring.aop.hightest.declareparents.service..*.*(..))")
+    @Pointcut("execution(* com.hyf.spring3.introduction.service..*.*(..))")
     public void pc1() {
     }
 

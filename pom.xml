@@ -96,12 +96,43 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.5</version>
         </dependency>
+        <!-- spring-aspects -->
+        <!-- 支持不被spring容器管理的bean创建aop代理 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
 
         <!-- yaml文件解析 -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>1.25</version>
+        </dependency>
+
+        <!-- 支持JSR-330相关的注解 -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <!-- 通过在编译时创建候选静态列表来提高大型应用程序的启动性能 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-indexer</artifactId>
+            <version>5.2.2.RELEASE</version>
+            <!-- 编译期有效 -->
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 查看类使用 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
     </dependencies>

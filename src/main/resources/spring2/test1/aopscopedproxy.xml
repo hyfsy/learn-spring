@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 当单例对象依赖于web作用范围的实例时，需要将此依赖指定为一个代理对象 -->
+    <bean id="testUser" class="com.hyf.spring2.pojo.User">
+
+        <!-- 指定强制使用JDK动态代理，默认为CGLIB代理 -->
+        <aop:scoped-proxy proxy-target-class="false" />
+    </bean>
+
+    <!-- 自定义作用范围的配置对象配置自定义范围 -->
+    <!-- spring默认不会注册SimpleThreadScope范围 -->
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <!-- 指定作用范围的名称 -->
+                <entry key="thread">
+                    <!-- 指定作用范围对象 -->
+                    <bean class="org.springframework.context.support.SimpleThreadScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

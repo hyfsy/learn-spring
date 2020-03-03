@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.hyf.spring3.introduction" />
+    <aop:aspectj-autoproxy />
+
+    <bean id="personService" class="com.hyf.spring3.introduction.service.impl.PersonServiceImpl" />
+    <bean id="animalService" class="com.hyf.spring3.introduction.service.impl.AnimalServiceImpl" />
+    <bean id="printUse" class="com.hyf.spring3.introduction.aspect.PrintUse" />
+
+    <aop:config>
+        <aop:aspect id="loggerAdvice" ref="printUse">
+            <aop:declare-parents
+                    types-matching="com.hyf.spring3.introduction.service.PersonService+"
+                    implement-interface="com.hyf.spring3.introduction.service.AnimalService"
+                    default-impl="com.hyf.spring3.introduction.service.impl.AnimalServiceImpl"/>
+            <!--delegate-ref="animalService"/>-->
+
+            <aop:pointcut id="pc1" expression="execution(* *(..))" />
+            <aop:before method="printBefore" pointcut-ref="pc1" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
