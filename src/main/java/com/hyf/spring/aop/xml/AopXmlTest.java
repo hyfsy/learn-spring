@@ -10,7 +10,7 @@ public class AopXmlTest {
     @Test
     public void go(){
 
-        ApplicationContext ioc = new ClassPathXmlApplicationContext("aop.xml");
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("aop-learn.xml");
         AccountServiceImpl accountService = ioc.getBean("accountService", AccountServiceImpl.class);
 
         accountService.printAccount(11);
