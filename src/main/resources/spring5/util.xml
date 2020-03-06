@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!-- ======================util:constant=============================== -->
+
+
+    <bean id="con1" class="com.hyf.spring5.pojo.Constant">
+        <property name="isolation">
+            <!--<bean id="java.sql.Connection.TRANSACTION_NONE"-->
+                  <!--class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />-->
+            <!-- 设置属性值 -->
+            <util:constant static-field="java.sql.Connection.TRANSACTION_READ_COMMITTED" />
+        </property>
+    </bean>
+
+    <bean id="con2" class="com.hyf.spring5.pojo.Constant">
+        <property name="isolation">
+            <bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE"
+                  class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+        </property>
+    </bean>
+
+    <!-- 和上方定义类似 -->
+    <bean id="fieldRetrievingFactoryBean"
+          class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.sql.Connection.TRANSACTION_NONE" />
+    </bean>
+
+
+    <!-- ===================property-path======================== -->
+
+
+    <bean id="con3" class="com.hyf.spring5.pojo.Constant">
+        <property name="isolation" value="1" />
+    </bean>
+
+    <util:property-path id="con3Isolation" path="con3.isolation" />
+
+    <bean id="con3.isolation" class="org.springframework.beans.factory.config.PropertyPathFactoryBean" />
+
+    <!-- 和上方定义类似 -->
+    <bean id="myIsolation" class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+        <property name="targetBeanName" value="con3" />
+        <property name="propertyPath" value="isolation" />
+    </bean>
+
+    <bean id="con4" class="com.hyf.spring5.pojo.Constant">
+        <property name="isolation">
+            <bean id="con3.isolation" class="org.springframework.beans.factory.config.PropertyPathFactoryBean" />
+        </property>
+    </bean>
+
+
+    <!-- ==========================property========================= -->
+
+
+    <bean id="jdbc1" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="jdbc.properties" />
+    </bean>
+
+    <util:properties id="jdbc2" location="jdbc.properties" />
+
+
+    <!-- ========================list/set/map========================= -->
+
+
+    <util:list id="list1" list-class="java.util.LinkedList" value-type="java.lang.String">
+        <value>asdf</value>
+        <value>asdf</value>
+        <value>asdf</value>
+        <value>asdf</value>
+    </util:list>
+
+    <util:set id="set1">
+        <value>asdf</value>
+    </util:set>
+
+    <util:map id="map1" map-class="java.util.TreeMap" key-type="java.lang.String">
+        <entry key="1" value="asdf" />
+    </util:map>
+
+
+
+</beans>

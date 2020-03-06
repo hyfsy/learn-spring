@@ -98,11 +98,11 @@
         </dependency>
         <!-- spring-aspects -->
         <!-- 支持不被spring容器管理的bean创建aop代理 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-aspects</artifactId>-->
+            <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
 
 
         <!-- yaml文件解析 -->
