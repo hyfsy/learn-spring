@@ -16,6 +16,9 @@ import java.util.Set;
  */
 public class ConstantUtilTest {
 
+    /**
+     * 设置属性值
+     */
     @Test
     public void testConstant() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring5/util.xml");
@@ -27,6 +30,9 @@ public class ConstantUtilTest {
         System.out.println(constant2);
     }
 
+    /**
+     * 设置属性路径引用值
+     */
     @Test
     public void testPropertyPath() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring5/util.xml");
@@ -48,6 +54,9 @@ public class ConstantUtilTest {
 
     }
 
+    /**
+     * 设置资源加载路径
+     */
     @Test
     public void testProperties() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring5/util.xml");
@@ -59,6 +68,9 @@ public class ConstantUtilTest {
         System.out.println(prop2);
     }
 
+    /**
+     * 设置集合等
+     */
     @Test
     public void testCollection() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring5/util.xml");

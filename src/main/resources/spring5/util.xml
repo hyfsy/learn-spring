@@ -35,7 +35,7 @@
     </bean>
 
 
-    <!-- ===================property-path======================== -->
+    <!-- ===================util:property-path======================== -->
 
 
     <bean id="con3" class="com.hyf.spring5.pojo.Constant">
@@ -59,7 +59,7 @@
     </bean>
 
 
-    <!-- ==========================property========================= -->
+    <!-- ==========================util:properties========================= -->
 
 
     <bean id="jdbc1" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -69,7 +69,7 @@
     <util:properties id="jdbc2" location="jdbc.properties" />
 
 
-    <!-- ========================list/set/map========================= -->
+    <!-- ========================util:list/set/map========================= -->
 
 
     <util:list id="list1" list-class="java.util.LinkedList" value-type="java.lang.String">
