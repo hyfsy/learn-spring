@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.hyf.spring.test" />
+
+    <tx:annotation-driven />
+
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <constructor-arg name="ds" ref="druidDataSource" />
+    </bean>
+
+    <!-- druid数据源 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/learn?serverTimezone=UTC" />
+        <property name="username" value="root" />
+        <property name="password" value="hyflearn" />
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource" />
+    </bean>
+
+    <!-- 事务通知 -->
+<!--    <tx:advice id="txAdvice">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="add" />-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+
+    <!-- 事务切面 -->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="pc1" expression="execution(* com.hyf.spring.test.service..*(..))" />-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc1" />-->
+<!--    </aop:config>-->
+</beans>
