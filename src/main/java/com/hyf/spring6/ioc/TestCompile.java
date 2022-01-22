@@ -1,8 +1,8 @@
 package com.hyf.spring6.ioc;
 
-import com.hyf.ioc.other.autowire.AutowireAnnotation;
-import com.hyf.ioc.other.event.EventService;
-import com.spring.ioc.xml.ioc.Account;
+import com.hyf.spring.ioc.xml.ioc.Account;
+import com.hyf.spring6.ioc.other.autowire.AutowireAnnotation;
+import com.hyf.spring6.ioc.other.event.EventService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

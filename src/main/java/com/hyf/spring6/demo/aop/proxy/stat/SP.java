@@ -1,7 +1,7 @@
 package com.hyf.spring6.demo.aop.proxy.stat;
 
-import com.hyf.demo.aop.common.UserService;
-import com.hyf.demo.aop.common.UserServiceImpl;
+import com.hyf.spring6.demo.aop.common.UserService;
+import com.hyf.spring6.demo.aop.common.UserServiceImpl;
 
 public class SP {
 

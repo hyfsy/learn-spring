@@ -1,6 +1,6 @@
 package com.hyf.spring6.aop;
 
-import com.hyf.aop.other.service.TransferServiceI;
+import com.hyf.spring6.aop.other.service.TransferServiceI;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

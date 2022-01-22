@@ -1,6 +1,6 @@
 package com.hyf.spring6.ioc.other.config;
 
-import com.hyf.ioc.other.lifecycle.MyLifecycle;
+import com.hyf.spring6.ioc.other.lifecycle.MyLifecycle;
 import org.springframework.context.annotation.Bean;
 
 /**

@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 //@Configuration // 可行
 public class AopLogger {
 
-	@Pointcut("execution(* com.hyf.aop.other.service..*(..))")
+	@Pointcut("execution(* com.hyf.spring6.aop.other.service..*(..))")
 	public void pc1() {
 	}
 
-	@Pointcut(value = "execution(* com.hyf.aop.other.service..*(..)) && args(str)", argNames = "str")
+	@Pointcut(value = "execution(* com.hyf.spring6.aop.other.service..*(..)) && args(str)", argNames = "str")
 	public void pc2(String str) {
 	}
 

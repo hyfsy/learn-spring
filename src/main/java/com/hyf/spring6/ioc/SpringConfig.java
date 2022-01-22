@@ -1,7 +1,7 @@
 package com.hyf.spring6.ioc;
 
-import com.hyf.ioc.other.config.AbstractSpringConfig;
-import com.hyf.ioc.other.config.SpringConfigI;
+import com.hyf.spring6.ioc.other.config.AbstractSpringConfig;
+import com.hyf.spring6.ioc.other.config.SpringConfigI;
 import org.springframework.context.annotation.*;
 
 /**
@@ -11,13 +11,13 @@ import org.springframework.context.annotation.*;
  */
 @Configuration
 @ComponentScans(value = {
-//		@ComponentScan("com.hyf.ioc.other.lifecycle"),
-//		@ComponentScan("com.hyf.ioc.other.event"),
-//		@ComponentScan("com.hyf.ioc.other.factory"),
-//		@ComponentScan("com.hyf.ioc.other.parent"),
-//		@ComponentScan("com.hyf.ioc.other.nest"),
-//		@ComponentScan("com.hyf.ioc.other.common"),
-		@ComponentScan("com.hyf.ioc.other.autowire"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.lifecycle"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.event"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.factory"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.parent"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.nest"),
+//		@ComponentScan("com.hyf.spring6.ioc.other.common"),
+		@ComponentScan("com.hyf.spring6.ioc.other.autowire"),
 })
 //@Import({JdbcConfig.class, EventConfig.class}) // @Import 导入的类的bean名称默认为【全路径】
 @ImportResource("spring-ioc.xml")

@@ -1,7 +1,7 @@
 package com.hyf.spring6.demo.aop.example;
 
-import com.hyf.demo.aop.common.UserService;
-import com.hyf.demo.aop.common.UserServiceImpl;
+import com.hyf.spring6.demo.aop.common.UserService;
+import com.hyf.spring6.demo.aop.common.UserServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

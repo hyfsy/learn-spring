@@ -1,6 +1,6 @@
 package com.hyf.spring6.ioc.other.config;
 
-import com.hyf.ioc.other.event.MyListener;
+import com.hyf.spring6.ioc.other.event.MyListener;
 import org.springframework.context.annotation.Bean;
 
 /**

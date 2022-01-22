@@ -1,6 +1,6 @@
 package com.hyf.spring6.ioc.other.autowire;
 
-import com.hyf.ioc.other.autowire.pojo.*;
+import com.hyf.spring6.ioc.other.autowire.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @date 2020/02/21
  */
 @Configuration
-@ComponentScan("com.hyf.aop.other")
+@ComponentScan("com.hyf.spring6.aop.other")
 @EnableAspectJAutoProxy(exposeProxy = true)
 public class AopConfig {
 

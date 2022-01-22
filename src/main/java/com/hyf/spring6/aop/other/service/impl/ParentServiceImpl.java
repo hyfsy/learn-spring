@@ -1,6 +1,6 @@
 package com.hyf.spring6.aop.other.service.impl;
 
-import com.hyf.aop.other.service.ParentServiceI;
+import com.hyf.spring6.aop.other.service.ParentServiceI;
 import org.springframework.stereotype.Component;
 
 /**

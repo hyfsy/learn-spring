@@ -1,6 +1,6 @@
 package com.hyf.spring6.aop.other.service.impl;
 
-import com.hyf.aop.other.service.TransferServiceI;
+import com.hyf.spring6.aop.other.service.TransferServiceI;
 import org.springframework.stereotype.Service;
 
 /**

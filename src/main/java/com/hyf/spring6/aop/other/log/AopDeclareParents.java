@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AopDeclareParents {
 
-	@Pointcut("execution(* com.hyf.aop.other.service.impl..*(..))")
+	@Pointcut("execution(* com.hyf.spring6.aop.other.service.impl..*(..))")
 	public void pcParent() {
 	}
 
@@ -28,11 +28,11 @@ public class AopDeclareParents {
 	/**
 	 * 类过滤，切入点表达式
 	 */
-	@DeclareParents(value = "com.hyf.aop.other.service..*", defaultImpl = ParentServiceImpl.class)
+	@DeclareParents(value = "com.hyf.spring6.aop.other.service..*", defaultImpl = ParentServiceImpl.class)
     ParentServiceI parentService;
 
 
-	@Before("com.hyf.aop.other.log.AopLogger.pc1()")
+	@Before("com.hyf.spring6.aop.other.log.AopLogger.pc1()")
 	public void beforeParent() {
 		System.out.println("---beforeParent");
 	}
