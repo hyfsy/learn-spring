@@ -1,8 +1,8 @@
 package com.hyf.spring6.valid;
 
-import com.hyf.valid.other.pojo.Student;
-import com.hyf.valid.other.pojo.Teacher;
-import com.hyf.valid.other.service.TeacherServiceI;
+import com.hyf.spring6.valid.other.pojo.Student;
+import com.hyf.spring6.valid.other.pojo.Teacher;
+import com.hyf.spring6.valid.other.service.TeacherServiceI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.aop.Pointcut;

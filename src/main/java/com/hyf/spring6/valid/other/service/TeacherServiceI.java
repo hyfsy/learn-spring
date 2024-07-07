@@ -1,7 +1,7 @@
 package com.hyf.spring6.valid.other.service;
 
-import com.hyf.valid.other.pojo.Student;
-import com.hyf.valid.other.pojo.Teacher;
+import com.hyf.spring6.valid.other.pojo.Student;
+import com.hyf.spring6.valid.other.pojo.Teacher;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;

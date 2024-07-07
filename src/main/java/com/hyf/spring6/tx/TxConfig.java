@@ -1,7 +1,7 @@
 package com.hyf.spring6.tx;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.hyf.tx.other.util.ServiceNameGenerator;
+import com.hyf.spring6.tx.other.util.ServiceNameGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  * @date 2020/04/05
  */
 @Configuration
-@ComponentScan(basePackages = "com.hyf.tx.other.service", nameGenerator = ServiceNameGenerator.class) // , nameGenerator = ServiceNameGenerator.class
+@ComponentScan(basePackages = "com.hyf.spring6.tx.other.service", nameGenerator = ServiceNameGenerator.class) // , nameGenerator = ServiceNameGenerator.class
 @PropertySource("jdbc.properties")
 @EnableTransactionManagement
 // aop测试事务拦截器链顺序

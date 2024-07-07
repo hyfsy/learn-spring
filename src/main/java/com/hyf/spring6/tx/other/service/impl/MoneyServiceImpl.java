@@ -1,8 +1,8 @@
 package com.hyf.spring6.tx.other.service.impl;
 
 
-import com.hyf.tx.other.pojo.Money;
-import com.hyf.tx.other.service.MoneyServiceI;
+import com.hyf.spring6.tx.other.pojo.Money;
+import com.hyf.spring6.tx.other.service.MoneyServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;

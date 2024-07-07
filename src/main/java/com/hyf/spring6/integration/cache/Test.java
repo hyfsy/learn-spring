@@ -16,12 +16,12 @@ public class Test {
 
         CacheService bean = context.getBean(CacheService.class);
 
-        bean.testCacheable3(123);
-        bean.testCacheable3(123);
-
-        // bean.testCacheable();
+        bean.testCacheable();
         // bean.testCacheable();
         // bean.testCacheable2(111);
+
+        // bean.testCacheable3(123);
+        // bean.testCacheable3(123);
 
     }
 }

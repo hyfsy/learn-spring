@@ -1,6 +1,6 @@
 package com.hyf.spring6.tx.other.service;
 
-import com.hyf.tx.other.pojo.Money;
+import com.hyf.spring6.tx.other.pojo.Money;
 
 /**
  * @author baB_hyf

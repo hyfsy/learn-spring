@@ -1,8 +1,8 @@
 package com.hyf.spring6.valid.other.service.impl;
 
-import com.hyf.valid.other.pojo.Student;
-import com.hyf.valid.other.pojo.Teacher;
-import com.hyf.valid.other.service.TeacherServiceI;
+import com.hyf.spring6.valid.other.pojo.Student;
+import com.hyf.spring6.valid.other.pojo.Teacher;
+import com.hyf.spring6.valid.other.service.TeacherServiceI;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;

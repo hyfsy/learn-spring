@@ -1,7 +1,7 @@
 package com.hyf.spring6.valid.other.pojo;
 
-import com.hyf.valid.other.groups.Group1;
-import com.hyf.valid.other.groups.Group2;
+import com.hyf.spring6.valid.other.groups.Group1;
+import com.hyf.spring6.valid.other.groups.Group2;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Min;
